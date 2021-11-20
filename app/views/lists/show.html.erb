@@ -1,0 +1,17 @@
+<%= render 'navbar' %>
+
+<div class="container">
+  <h1>and here is one list</h1>
+
+  <% @list.bookmarks.each do |bookmark| %>
+    <%= bookmark.comment %>
+    <%= Movie.find(bookmark.movie_id).title %>
+    <%= link_to bookmark_path(bookmark),
+            method: :delete,
+            data: { confirm: "Delete this bookmark?" } do %>
+              <i class="far fa-trash-alt"></i>
+          <% end %>
+  <% end %>
+
+  <%= link_to "Add Bookmark", new_list_bookmark_path(@list) %>
+</div>

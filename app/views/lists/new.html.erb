@@ -1,0 +1,11 @@
+<%= render 'navbar' %>
+
+<div class="container">
+  <h1>this is where a form to create a new list should go</h1>
+
+  <%= simple_form_for(@list) do |f| %>
+    <%= f.input :name %>
+    <%= f.submit "Create List", class:"btn btn-primary mt-3"%>
+    <%= link_to "Cancel", lists_path, class:"btn btn-danger mt-3" %>
+  <% end %>
+</div>
