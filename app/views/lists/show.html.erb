@@ -1,17 +1,38 @@
 <%= render 'navbar' %>
 
 <div class="container">
-  <h1>and here is one list</h1>
+  <h3><%= @list.name %></h3>
 
-  <% @list.bookmarks.each do |bookmark| %>
-    <%= bookmark.comment %>
-    <%= Movie.find(bookmark.movie_id).title %>
-    <%= link_to bookmark_path(bookmark),
-            method: :delete,
-            data: { confirm: "Delete this bookmark?" } do %>
-              <i class="far fa-trash-alt"></i>
-          <% end %>
-  <% end %>
+  <div class="cards">
+    <% @list.bookmarks.each do |bookmark| %>
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= Movie.find(bookmark.movie_id).title %></h5>
+          <p class="card-text"><%= bookmark.comment %></p>
+          <%= link_to bookmark_path(bookmark),
+                method: :delete,
+                data: { confirm: "Delete this bookmark?" } do %>
+                  <i class="far fa-trash-alt"></i>
+              <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 
-  <%= link_to "Add Bookmark", new_list_bookmark_path(@list) %>
+  <!-- <%= link_to "Add Bookmark", new_list_bookmark_path(@list) %> -->
+  <br>
+  <h6><strong>Add New Bookmark</strong></h6>
+  <%= render 'bookmarks/form' %>
+
+  <h3>Reviews</h3>
+    <% @list.reviews.each do |review| %>
+      <%= review.rating %>
+      <%= review.content %>
+    <% end %>
+
+  <br>
+  <h6><strong>Leave a Review</strong></h6>
+  <%= render 'reviews/reviewform' %>
+
 </div>

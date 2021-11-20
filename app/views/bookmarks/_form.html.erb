@@ -1,0 +1,6 @@
+<%= simple_form_for [@list, @bookmark] do |f| %>
+  <%= f.input :comment %>
+  <%= f.association :movie, input_html: { class: 'select2' } %>
+  <%= f.submit "Create Bookmark", class:"btn btn-primary mt-3"%>
+  <!-- <%= link_to "Cancel", list_path(@list), class:"btn btn-danger mt-3" %> -->
+<% end %>

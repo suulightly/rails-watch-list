@@ -1,10 +1,7 @@
+<%= render 'lists/navbar' %>
+
 <div class="container">
   <h1>this is where a form to create a new bookmark should go</h1>
 
-  <%= simple_form_for [@list, @bookmark] do |f| %>
-    <%= f.input :comment %>
-    <%= f.association :movie %>
-    <%= f.submit "Create Bookmark", class:"btn btn-primary mt-3"%>
-    <%= link_to "Cancel", list_path(@list), class:"btn btn-danger mt-3" %>
-  <% end %>
+  <%= render 'form' %>
 </div>

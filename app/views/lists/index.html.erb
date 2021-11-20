@@ -1,11 +1,17 @@
 <%= render 'navbar' %>
 
-<div class="container">
-  <h1>here are all the lists</h1>
+<div class="home-banner">
+  <h1>Save Movie Lists</h1>
+</div>
 
-  <% @lists.each do |list| %>
-    <%= link_to list.name, list_path(list) %>
-  <% end %>
+<div class="container mt-3">
+  <h3>here are all the lists</h3>
 
-  <%= link_to "Add new list", new_list_path %>
+  <div class="cards">
+    <% @lists.each do |list| %>
+      <div class="card-category" style="background-color: black">
+        <%= link_to list.name, list_path(list) %>
+      </div>
+    <% end %>
+  </div>
 </div>
